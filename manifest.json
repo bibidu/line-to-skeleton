@@ -1,0 +1,43 @@
+{
+	"manifest_version": 2,
+	"name": "line-2-skeleton",
+	"version": "0.1",
+	"description": "convert line on canvas to skeleton html",
+	"author": "bibidu",
+	"browser_action": {
+		"default_icon": "images/logo.png",
+		"default_popup": "popup.html",
+		"default_title": "extract html"
+  },
+  "icons": {
+    "128": "images/logo.png"
+  },
+  "background": {
+    "scripts": ["dist/background.js"],
+    "persistent": true
+  },
+  "permissions": [
+    "activeTab", 
+    "declarativeContent", 
+    "storage",
+    "contextMenus",
+    "webRequest", 
+    "webRequestBlocking",
+    "tabs",
+    "contextMenus",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "web_accessible_resources": ["js/inject.js"],
+  "content_scripts": [{
+    "matches": [
+        "http://*/*",
+        "https://*/*"
+    ],
+    "js": [
+        "/dist/contentScript.js"
+    ],
+    "css": ["popup.css"],
+    "run_at": "document_start"
+  }]
+}
